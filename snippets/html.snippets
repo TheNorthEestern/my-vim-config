@@ -47,6 +47,14 @@ snippet backspace
 # ⎋
 snippet escape
 	&#x238B;
+# html comment
+snippet cm
+	<!-- ${1}  -->
+# Multi-line ready html comment
+snippet cml
+	<!--
+		${1}
+	-->
 # Generic Doctype
 snippet doctype HTML 4.01 Strict
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
@@ -78,7 +86,7 @@ snippet doct
 	"http://www.w3.org/TR/html4/loose.dtd">
 # HTML Doctype 5
 snippet doct5
-	<!DOCTYPE html>
+	<!DOCTYPE HTML>
 # XHTML Doctype 1.0 Frameset
 snippet docxf
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
@@ -97,11 +105,40 @@ snippet docx
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 snippet html
 	<html>
-	${1}
+	<head>
+		<meta charset="utf-8">
+		<title>${1}</title>	
+	</head>
+		<body>
+		${2}
+		</body>
 	</html>
 snippet xhtml
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	${1}
+	</html>
+snippet html5
+	<!DOCTYPE html>
+		<html dir="ltr" lang="en-US">
+		<head>
+		<meta charset="utf-8">
+		<title>HTML5</title>
+		</head> 
+	<body>
+		<header> 
+			<nav></nav>
+		</header> 
+			<section>
+				<article>
+					<header></header>
+				 		<figure></figure>
+					<footer></footer>
+				</article>
+			 <dialog><dialog>
+			</section> 
+			<aside></aside> 
+			<footer></footer>
+	</body> 
 	</html>
 snippet body
 	<body>
@@ -109,31 +146,42 @@ snippet body
 	</body>
 snippet head
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()` />
-
+		<meta charset="UTF-8"`Close()`>
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
 		${2}
 	</head>
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
-snippet script
+snippet code
+	<script>
+		${1}
+	</script>${2}
+snippet coded
 	<script type="text/javascript" charset="utf-8">
 		${1}
 	</script>${2}
-snippet src
+snippet script
+	<script src="${1}.js"></script>${2}
+snippet scriptd
 	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
 snippet style
 	<style type="text/css" media="${1:screen}">
 		${2}
 	</style>${3}
 snippet base
-	<base href="${1}" target="${2}"`Close()` />
-snippet break 
-	<br`Close()[1:]` />
+	<base href="${1}" target="${2}"`Close()`>
+snippet r
+	<br`Close()[1:]`>
 snippet div
 	<div id="${1:name}">
 		${2}
 	</div>
+# open css declaration
+snippet cd
+	${1:selector}
+	{
+		${2:property}:${3:value};
+	}
 # Embed QT Movie
 snippet movie
 	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
@@ -161,13 +209,25 @@ snippet form
 
 	<p><input type="submit" value="Continue &rarr;"`Close()`></p>
 	</form>
+snippet ol
+	<ol type="${1}">
+		<li>${2}</li>
+		<li>${3}</li>
+	</ol>
+snippet ul
+	<ul>
+		<li>${1}</li>
+		<li>${2}</li>
+	</ul>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
 snippet input
-	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()` />${4}
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
 snippet label
 	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
 snippet link
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}">${4}
+snippet linkd
 	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()` />${4}
 snippet mailto
 	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
@@ -188,3 +248,47 @@ snippet table
 	</table>${4}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+snippet reset
+			html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed, 
+		figure, figcaption, footer, header, hgroup, 
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure, 
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}

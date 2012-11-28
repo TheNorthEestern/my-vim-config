@@ -2,6 +2,8 @@ snippet php
 	<?php
 	${1}
 	?>
+snippet phpi
+	<?php ${1} ?>
 snippet ec
 	echo "${1:string}"${2};
 snippet inc
@@ -214,6 +216,12 @@ snippet fun
 # $... = array (...)
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
+
+# html entries
+#
+#
+#
+
 # Some useful Unicode entities
 # Non-Breaking Space
 snippet nbs
@@ -263,6 +271,14 @@ snippet backspace
 # ⎋
 snippet escape
 	&#x238B;
+# html comment
+snippet cm
+	<!-- ${1}  -->
+# Multi-line ready html comment
+snippet cml
+	<!--
+		${1}
+	-->
 # Generic Doctype
 snippet doctype HTML 4.01 Strict
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
@@ -294,7 +310,7 @@ snippet doct
 	"http://www.w3.org/TR/html4/loose.dtd">
 # HTML Doctype 5
 snippet doct5
-	<!DOCTYPE HTML>
+	<!doctype html>
 # XHTML Doctype 1.0 Frameset
 snippet docxf
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
@@ -312,12 +328,41 @@ snippet docx
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 snippet html
-	<html>
-	${1}
+	<html dir="ltr" lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<title>${1}</title>	
+	</head>
+		<body>
+		${2}
+		</body>
 	</html>
 snippet xhtml
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	${1}
+	</html>
+snippet html5
+	<!DOCTYPE html>
+		<html dir="ltr" lang="en-US">
+		<head>
+		<meta charset="utf-8">
+		<title>HTML5</title>
+		</head> 
+	<body>
+		<header> 
+			<nav></nav>
+		</header> 
+			<section>
+				<article>
+					<header></header>
+				 		<figure></figure>
+					<footer></footer>
+				</article>
+			 <dialog><dialog>
+			</section> 
+			<aside></aside> 
+			<footer></footer>
+	</body> 
 	</html>
 snippet body
 	<body>
@@ -325,18 +370,23 @@ snippet body
 	</body>
 snippet head
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
-
+		<meta charset="UTF-8"`Close()`>
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
 		${2}
 	</head>
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
-snippet script
+snippet code
+	<script>
+		${1}
+	</script>${2}
+snippet coded
 	<script type="text/javascript" charset="utf-8">
 		${1}
 	</script>${2}
-snippet scriptsrc
+snippet script
+	<script src="${1}.js"></script>${2}
+snippet scriptd
 	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
 snippet style
 	<style type="text/css" media="${1:screen}">
@@ -377,14 +427,26 @@ snippet form
 
 	<p><input type="submit" value="Continue &rarr;"`Close()`></p>
 	</form>
+snippet ol
+	<ol type="${1}">
+		<li>${2}</li>
+		<li>${3}</li>
+	</ol>
+snippet ul
+	<ul>
+		<li>${1}<li>
+		<li>${2}<li>
+	</ul>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
 snippet input
-	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()` />${4}
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
 snippet label
 	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
 snippet link
-	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()`>${4}
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}">${4}
+snippet linkd
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()` />${4}
 snippet mailto
 	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
 snippet meta

@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/kacy/Desktop'
-let g:netrw_dirhist_2='/Users/kacy/Programming/C++'
-let g:netrw_dirhist_3='/Users/kacy/Sites/javascript'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/kacyjames/Sites/Dropbox/Programming/banana'
+let g:netrw_dirhist_2='/Users/kacyjames/Sites/Dropbox/Programming/python/capstone/SayHi-Web/sayhi/templates'
+let g:netrw_dirhist_3='/Users/kacyjames/Sites/Dropbox/Programming/python/operating_systems/assignment_1_revised'
+let g:netrw_dirhist_4='/Users/kacyjames/Sites/Dropbox/Programming/python/capstone/SayHi-Web/capstone'
+let g:netrw_dirhist_5='/Users/kacyjames/Sites/Dropbox/Programming/ruby/rails_projects/sample_app'
+let g:netrw_dirhist_6='/Users/kacyjames/Sites/Dropbox/Programming/python/capstone/SayHi-Web/sayhi/templates'
+let g:netrw_dirhist_7='/Users/kacyjames/Downloads/django-ember-example-master/djangoapp/tasks/templates'
+let g:netrw_dirhist_8='/Users/kacyjames/Sites/Dropbox/Programming/javascript/js_applications'
